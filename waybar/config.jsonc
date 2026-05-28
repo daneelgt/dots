@@ -1,0 +1,25 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 22, // Barra bem fina
+    "spacing": 0,
+
+    "modules-left": ["hyprland/window"], // Mostra o nome do programa aberto (ex: nvim)
+    "modules-right": ["custom/rec", "custom/temp", "custom/ram", "custom/media", "clock"],
+
+    "hyprland/window": {
+        "format": " 1 | []= {} " // Imita o visual de tags e layout do DWM
+    },
+    "custom/rec": { "format": "Rec |" },
+    "custom/temp": { 
+        "exec": "sensors | grep 'Core 0' | awk '{print $3}'",
+        "interval": 10,
+        "format": " {} |" 
+    },
+    "custom/ram": { "format": " 6.70g |" }, // Exemplo estático ou use módulo "memory"
+    "custom/media": { "format": " C418 - peanuts ⏸ |" },
+    
+    "clock": {
+        "format": " {:%A, %B %d %I:%M%p} " // Formato exato de data/hora da imagem
+    }
+}
