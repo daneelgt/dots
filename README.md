@@ -1,6 +1,10 @@
-# dotfiles
+# 🚀 Dotfiles
+![GitHub stars](https://img.shields.io/github/stars/daneelgt/dots?style=social)
+![GitHub forks](https://img.shields.io/github/forks/daneelgt/dots?style=social)
 
-<img width="2400" height="1350" alt="image" src="https://github.com/user-attachments/assets/7b063dea-c5a9-438c-9cd2-989f0d1c3d72" />
+<div align="center">
+  <img width="800px" height="1350" alt="Desktop Screenshot" src="https://github.com/user-attachments/assets/7b063dea-c5a9-438c-9cd2-989f0d1c3d72" />
+</div>
 
 ## stack
 
