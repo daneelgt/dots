@@ -1,6 +1,7 @@
-# 🚀 Dotfiles
+# 💻 Dotfiles
 ![GitHub stars](https://img.shields.io/github/stars/daneelgt/dots?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/daneelgt/dots?style=social)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 <div align="center">
   <img width="800px" height="1350" alt="Desktop Screenshot" src="https://github.com/user-attachments/assets/7b063dea-c5a9-438c-9cd2-989f0d1c3d72" />
@@ -69,3 +70,15 @@ cd ~/dotfiles
 
 - **Wallpapers**: jogue imagens em `~/Pictures/Wallpapers/` e `SUPER+W` cicla
 - **Keybinds**: `~/.config/hypr/hyprland.conf` (seção de `bind`)
+
+## 📄 Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
+
+---
+
+<div align="center">
+  <p>Feito com ❤️ por <a href="https://github.com/daneelgt">daneelgt</a></p>
+  <p>Inspirado pela configurações incrivel da Bread on Penguins</p>
+  <p>⭐ Este repositório se for útil para você!</p>
+</div>
