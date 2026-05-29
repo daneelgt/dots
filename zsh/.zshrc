@@ -87,3 +87,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+alias walr="wal -R && sleep 2 && killall -SIGUSR2 waybar"
+
+# Importar as cores do Pywal automaticamente
+(cat ~/.cache/wal/sequences &)
+
