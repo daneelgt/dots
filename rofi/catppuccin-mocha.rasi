@@ -1,17 +1,15 @@
 /* ==========================================================================
-   Rofi Catppuccin Mocha Theme
+   Rofi Theme - Minimalist Waybar Match (No Colors / Pure Earth Tones)
    ========================================================================== */
 
 * {
-    /* Paleta Catppuccin Mocha */
-    bg-col:      #1e1e2e;
-    bg-col-light:#252538;
-    border-col:  #89b4fa;
-    selected-col:#313244;
-    blue:        #89b4fa;
-    fg-col:      #cdd6f4;
-    fg-col2:     #f38ba8;
-    grey:        #6c7086;
+    /* Cores extraídas estritamente da sua Waybar, sem azul/ciano */
+    bg-col:      #1a1512;       /* Marrom escuro idêntico ao fundo da sua barra */
+    bg-col-light:#241d19;       /* Marrom sutilmente mais claro para a caixa de busca */
+    border-col:  #bca285;       /* Borda fina no tom bege/creme dos seus textos */
+    selected-col:#2c241f;       /* Destaque do aplicativo selecionado (marrom suave) */
+    fg-col:      #bca285;       /* O bege/creme dos textos da barra (~/dots) */
+    grey:        #554439;       /* Tom escurecido para textos secundários */
 
     width: 600;
     font: "JetBrainsMono Nerd Font 11";
@@ -24,10 +22,10 @@ element-text, element-icon , mode-switcher {
 
 window {
     height:           360px;
-    border:           2px;
+    border:           1px;      /* Borda ultra fina */
     border-color:     @border-col;
     background-color: @bg-col;
-    border-radius:    12px;
+    border-radius:    6px;
 }
 
 mainbox {
@@ -42,16 +40,11 @@ inputbar {
 }
 
 prompt {
-    background-color: @blue;
-    padding:          6px;
-    text-color:       @bg-col;
-    border-radius:    3px;
+    background-color: @border-col;
+    padding:          6px 12px;
+    text-color:       @bg-col;  /* Texto 'drun' invertido para dar leitura no creme */
+    border-radius:    4px;
     margin:           10px 0px 0px 10px;
-}
-
-textbox-prompt-colon {
-    expand:     false;
-    str:        ":";
 }
 
 entry {
@@ -59,11 +52,11 @@ entry {
     margin:           10px 10px 0px 10px;
     text-color:       @fg-col;
     background-color: @bg-col-light;
-    border-radius:    3px;
+    border-radius:    4px;
 }
 
 listview {
-    border:           0px 0px 0px;
+    border:           0px;
     padding:          6px 0px 0px;
     margin:           10px 10px 10px 10px;
     columns:          1;
@@ -72,34 +65,17 @@ listview {
 }
 
 element {
-    padding:          5px;
+    padding:          8px;
     background-color: @bg-col;
     text-color:       @fg-col;
-    border-radius:    5px;
+    border-radius:    4px;
 }
 
 element-icon {
-    size: 25px;
+    size: 22px;
 }
 
 element selected {
-    background-color:  @selected-col;
-    text-color:        @blue;
-}
-
-mode-switcher {
-    spacing: 0;
-  }
-
-button {
-    padding:          10px;
-    background-color: @bg-col-light;
-    text-color:       @grey;
-    vertical-align:   0.5; 
-    horizontal-align: 0.5;
-}
-
-button selected {
-  background-color: @bg-col;
-  text-color:       @blue;
+    background-color:  @selected-col; /* Apenas um realce marrom discreto ao selecionar */
+    text-color:        @fg-col;       /* Mantém o texto em creme */
 }
