@@ -10,15 +10,13 @@
     "hyprland/window": {
         "format": " 1 | []= {} " // Imita o visual de tags e layout do DWM
     },
-    "custom/rec": { "format": "Rec |" },
     "custom/temp": { 
         "exec": "sensors | grep 'Core 0' | awk '{print $3}'",
         "interval": 10,
         "format": " {} |" 
     },
     "custom/ram": { "format": " 6.70g |" }, // Exemplo estático ou use módulo "memory"
-    "custom/media": { "format": " C418 - peanuts ⏸ |" },
-    
+        
     "clock": {
         "format": " {:%A, %B %d %I:%M%p} " // Formato exato de data/hora da imagem
     }

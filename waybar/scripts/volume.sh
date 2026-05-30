@@ -7,7 +7,7 @@
 
 # Get raw volume and convert to int
 vol_raw=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{ print $2 }')
-vol_int=$(echo "$vol_raw * 100" | bc | awk '{ print int($1) }')
+vol_int=$(echo "$vol_raw * 100 / 1" | bc 2> /dev/null)
 
 # Check mute status
 is_muted=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo true || echo false)
@@ -28,17 +28,19 @@ fi
 # ASCII bar
 filled=$((vol_int / 10))
 empty=$((10 - filled))
-bar=$(printf '█%.0s' $(seq 1 $filled))
-pad=$(printf '░%.0s' $(seq 1 $empty))
+bar=""
+pad=""
+[ $filled -gt 0 ] && bar=$(printf '█%.0s' $(seq 1 $filled))
+[ $empty -gt 0 ] && pad=$(printf '░%.0s' $(seq 1 $empty))
 ascii_bar="[$bar$pad]"
 
 # Color logic
 if [ "$is_muted" = true ] || [ "$vol_int" -lt 10 ]; then
   fg="#bf616a" # red
 elif [ "$vol_int" -lt 50 ]; then
-  fg="#fab387" # orange
+  fg="#a68d74" # orange
 else
-  fg="#56b6c2" # cyan
+  fg="#a68d74" # orange
 fi
 
 # Tooltip text
