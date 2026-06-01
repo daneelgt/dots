@@ -9,19 +9,19 @@
 }
 
 window#waybar {
-    background-color: @background; 
-    color: @foreground;  
+    background-color: @background; /* Tom marrom escuro/oliva do fundo da barra dela */
+    color: @foreground;            /* Tom sépia/marrom claro do texto apagado */
 }
 
 /* Espaçamento e cor das tags/workspaces na esquerda */
 #workspaces button {
     padding: 0 8px;
-    color: @color8; 
+    color: @color8; /* Números inativos bem discretos */
     background-color: transparent;
 }
 
 #workspaces button.active {
-    color: @color4; 
+    color: @color4; /* Número ativo destacado */
 }
 
 #workspaces button.urgent {
@@ -42,6 +42,6 @@ window#waybar {
 #custom-power,
 #clock {
     padding: 0;
-    color: @foreground; 
+    color: @foreground@foreground; /* Usando uma cor de destaque do wallpaper */
     background-color: transparent;
 }

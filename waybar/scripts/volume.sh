@@ -35,19 +35,23 @@ pad=""
 ascii_bar="[$bar$pad]"
 
 # Color logic
-if [ "$is_muted" = true ] || [ "$vol_int" -lt 10 ]; then
-  fg="#bf616a" # red
-elif [ "$vol_int" -lt 50 ]; then
-  fg="#a68d74" # orange
+if [ -f "$HOME/.cache/wal/colors" ]; then
+    # Carrega as cores do Pywal em uma array (color0 até color15)
+    mapfile -t wal_colors < "$HOME/.cache/wal/colors"
+    COLOR_MUTED="${wal_colors[1]}" # Cor 1 (Geralmente um tom avermelhado)
+    COLOR_MAIN="${wal_colors[6]}"  # Cor 6 (Cor de destaque do wallpaper)
 else
-  fg="#a68d74" # orange
+    # Cores de segurança caso o Pywal não tenha rodado
+    COLOR_MUTED="#bf616a"
+    COLOR_MAIN="#a68d74"
 fi
 
-# Tooltip text
-if [ "$is_muted" = true ]; then
-  tooltip="Audio: Muted\nOutput: $sink"
+if [ "$is_muted" = true ] || [ "$vol_int" -lt 10 ]; then
+    fg="$COLOR_MUTED"
+elif [ "$vol_int" -lt 50 ]; then
+    fg="$COLOR_MAIN"
 else
-  tooltip="Audio: $vol_int%\nOutput: $sink"
+    fg="$COLOR_MAIN"
 fi
 
 # Final JSON output

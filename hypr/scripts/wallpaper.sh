@@ -89,8 +89,21 @@ write_state() {
 apply_wall() {
     local mon="$1"
     local img="$2"
+    
+    # 1. Aplica o papel de parede no monitor correspondente via SWWW
     "$WALL_CMD" img "$img" --outputs "$mon" --transition-type "$TRANS_TYPE" --transition-duration "$TRANS_DUR" --transition-fps 60
+
+    # 2. Se a imagem estiver sendo aplicada no seu monitor principal (focado), o Pywal extrai as cores dela
+    if [ "$mon" = "$focused_monitor" ] || [ "${#monitors[@]}" -eq 1 ]; then
+        # -n: não muda o fundo do Xroot (evita conflito com swww)
+        # -i: passa o caminho da imagem atual
+        wal -q -n -i "$img"
+        
+        # 3. Força a Waybar a recarregar o CSS com as novas cores do Wal instantaneamente
+        killall -SIGUSR2 waybar
+    fi
 }
+
 
 declare -A used
 declare -A next_map

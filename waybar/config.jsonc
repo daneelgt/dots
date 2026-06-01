@@ -5,7 +5,7 @@
     "spacing": 0,
 
     "modules-left": ["hyprland/window"], // Mostra o nome do programa aberto (ex: nvim)
-    "modules-right": ["custom/rec", "custom/temp", "custom/ram", "custom/media", "clock"],
+    "modules-right": ["custom/ram", "clock"],
 
     "hyprland/window": {
         "format": " 1 | []= {} " // Imita o visual de tags e layout do DWM
@@ -18,6 +18,6 @@
     "custom/ram": { "format": " 6.70g |" }, // Exemplo estático ou use módulo "memory"
         
     "clock": {
-        "format": " {:%A, %B %d %I:%M%p} " // Formato exato de data/hora da imagem
+        "format": "{:%A, %B %d - %I:%M %p}" // Formato exato de data/hora da imagem
     }
 }
