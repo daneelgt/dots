@@ -17,6 +17,9 @@ sudo pacman -Sy
 echo "📦 Instalando pacotes oficiais via pacman..."
 sudo pacman -S --noconfirm \
     waybar \
+    blueman \
+    amberol \
+    imv \
     bc \
     swww \
     spotify-launcher \
