@@ -1,79 +1,90 @@
-// Inspired by Catnap
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    // ─────────────────────────────────────────────────────────────────────────────
+    //  °˖* ૮(  • ᴗ ｡)っ🍸  pewdiepie/archdaemon/dionysh
+    //  shhheersh
+    //  fastfetch config — nord radioactive glow edition
+    // ─────────────────────────────────────────────────────────────────────────────
+
     "logo": {
-    	"source": "~/.config/fastfetch/blabla.png",
-    	"type": "kitty",
-    	"height": 10,
-    	"padding": {
-    		"top": 1
-    	}
+        "source": "~/.config/fastfetch/arch.txt",
+        "padding": {
+            "right": 3
+        }
     },
-    "display": {
-        "separator": " "
-    },
+    
     "modules": [
+        "title",
+        "separator",
         {
-            "key": "╭───────────╮",
-            "type": "custom"
+            "type": "os",
+            "key": "OS",
+            "format": "{3} {12}"
         },
         {
-            "key": "│ {#31} user    {#keys}│",
-            "type": "title",
-            "format": "{user-name}"
+            "type": "host",
+            "key": "Host"
         },
         {
-            "key": "│ {#32}󰇅 hname   {#keys}│",
-            "type": "title",
-            "format": "{host-name}"
+            "type": "kernel",
+            "key": "Kernel"
         },
         {
-            "key": "│ {#33}󰅐 uptime  {#keys}│",
-            "type": "uptime"
-        },
-     
-        {
-            "key": "│ {#35} kernel  {#keys}│",
-            "type": "kernel"
+            "type": "uptime",
+            "key": "Uptime"
         },
         {
-            "key": "│ {#36}󰇄 desktop {#keys}│",
-            "type": "de"
+            "type": "packages",
+            "key": "Packages"
         },
         {
-            "key": "│ {#31} term    {#keys}│",
-            "type": "terminal"
+            "type": "shell",
+            "key": "Shell"
         },
         {
-            "key": "│ {#32} shell   {#keys}│",
-            "type": "shell"
+            "type": "display",
+            "key": "Resolution",
+            "compactType": "resolution"
         },
         {
-            "key": "│ {#33}󰍛 cpu     {#keys}│",
+            "type": "wm",
+            "key": "WM"
+        },
+        {
+            "type": "theme",
+            "key": "Theme"
+        },
+        {
+            "type": "icons",
+            "key": "Icons"
+        },
+        {
+            "type": "terminal",
+            "key": "Terminal"
+        },
+        {
             "type": "cpu",
-            "showPeCoreCount": true
+            "key": "CPU",
+            "showPeCores": "physical",
+            "temp": false
         },
         {
-            "key": "│ {#34}󰉉 disk    {#keys}│",
+            "type": "gpu",
+            "key": "GPU"
+        },
+        {
+            "type": "memory",
+            "key": "Memory"
+        },
+        {
             "type": "disk",
+            "key": "Disk",
             "folders": "/"
         },
+        "break",
         {
-            "key": "│ {#35} memory  {#keys}│",
-            "type": "memory"
-        },
-        {
-            "key": "├───────────┤",
-            "type": "custom"
-        },
-        {
-            "key": "│ {#39} colors  {#keys}│",
             "type": "colors",
             "symbol": "circle"
-        },
-        {
-            "key": "╰───────────╯",
-            "type": "custom"
         }
     ]
 }
