@@ -60,7 +60,7 @@ cd ~/dotfiles
 ├── fastfetch/ → ~/.config/fastfetch/
 ├── zsh/       → ~/.config/zsh/
 ├── fish/      → ~/.config/fish/
-└── git/       → ~/.gitconfig
+└── install.sh
 ```
 
 ## customizar
