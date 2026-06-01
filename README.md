@@ -3,9 +3,6 @@
 ![GitHub forks](https://img.shields.io/github/forks/daneelgt/dots?style=social)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-<div align="center">
-  <img width="800px" height="1350" alt="Desktop Screenshot" src="https://github.com/user-attachments/assets/7b063dea-c5a9-438c-9cd2-989f0d1c3d72" />
-</div>
 
 ## stack
 
