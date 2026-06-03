@@ -62,6 +62,8 @@ chmod +x install.sh
 ├── fastfetch/ → ~/.config/fastfetch/
 ├── zsh/       → ~/.config/zsh/
 ├── fish/      → ~/.config/fish/
+├── nvim/      → ~/.config/nvim/
+├── ghostty/   → ~/.config/ghostty/
 └── install.sh
 ```
 
