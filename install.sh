@@ -33,7 +33,8 @@ sudo pacman -S --noconfirm \
     cachyos-gaming-meta \
     ghostty \
     inotify-tools \
-    ttf-jetbrains-mono-nerd
+    ttf-jetbrains-mono-nerd \
+    nautilus
 
 # 3. Instalar pacotes do AUR via Yay (VS Code, Launchers e Toolbox)
 echo "📦 Instalando pacotes do AUR via yay..."
