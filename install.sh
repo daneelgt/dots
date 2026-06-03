@@ -17,7 +17,6 @@ sudo pacman -Sy
 echo "📦 Instalando pacotes oficiais via pacman..."
 sudo pacman -S --noconfirm \
     waybar \
-    blueman \
     amberol \
     imv \
     bc \
@@ -31,7 +30,9 @@ sudo pacman -S --noconfirm \
     zip unzip curl \
     python-pywal \
     grim slurp wl-clipboard \
-    cachyos-gaming-meta
+    cachyos-gaming-meta \
+    ghostty \
+    inotify-tools
 
 # 3. Instalar pacotes do AUR via Yay (VS Code, Launchers e Toolbox)
 echo "📦 Instalando pacotes do AUR via yay..."
@@ -39,7 +40,8 @@ yay -S --noconfirm \
     visual-studio-code-bin \
     minecraft-launcher \
     prismlauncher \
-    jetbrains-toolbox
+    jetbrains-toolbox \
+    bluetui
 
 # 4. Aplicar o tema de cores com o Pywal
 echo "🎨 Aplicando paleta de cores com o Pywal..."
