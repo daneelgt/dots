@@ -48,7 +48,7 @@
 
     "memory": {
      "interval": 30,
-        "format": "   {percentage}% |",
+        "format": " CPU-{percentage}% |",
         "tooltip-format": "{used:0.1f}G/{total:0.1f}G used",
         "on-click": "exec ghostty --title=htop -e htop" 
     },
@@ -93,6 +93,7 @@
     "exec": "~/.config/waybar/scripts/volume.sh",
     "return-type": "json",
     "interval": 1,
+    "format": "{:10}",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",

@@ -4,7 +4,7 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: "JetBrainsMono Nerd Font Propo", "monospace";
+  font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", "monospace";
   font-size: 14px;
 }
 
@@ -48,21 +48,47 @@ window#waybar {
 
 #media {
   color: #42ff9f;
-  margin: 4px 0px 4px 50px;
+  margin: 4px 0px 4px 5px;
+  margin-right: 13px;
 }
 
 #custom-media-animation {
-  font-size: 7px;
+  font-size: 9px;
   margin-right: 5px;
 }
 
 #custom-media-now-playing {
-  margin-right: 7px;
+  margin-right: 10px;
 }
 
 #custom-media-time {
-  color: @foreground;
-  font-size: 10px;
+  color: rgba(113, 113, 122, 1);
+  font-size: 11px;
+}
+
+#custom-volume {
+  font-size: 13px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin: 0px;
+}
+
+#custom-volume label {
+  padding: 0px 2px;
+  margin: 0px;
+}
+
+#custom-microphone {
+  font-size: 14px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 20px;
+  margin: 0px;
+}
+
+#custom-microphone label {
+  padding: 0px;
+  margin-top: -1px;
 }
 
 tooltip {

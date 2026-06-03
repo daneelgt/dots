@@ -12,17 +12,13 @@ if [ -f "$HOME/.cache/wal/colors" ]; then
     mapfile -t wal_colors < "$HOME/.cache/wal/colors"
     COLOR_MUTED="${wal_colors[1]}" # Cor de alerta (tom vermelho/escuro) para mutado
     COLOR_MAIN="${wal_colors[6]}"  # Cor de destaque do seu wallpaper atual
-else
-    # Cores padrão caso o Pywal falhe
-    COLOR_MUTED="#bf616a"
-    COLOR_MAIN="#a68d74"
 fi
 
 if pactl get-source-mute @DEFAULT_SOURCE@ | grep -q 'yes'; then
     # Muted -> mic-off icon (Usa a cor de mutado)
-    echo "<span foreground='$COLOR_MUTED'> |   </span>"
+    echo "<span> |  </span>"
 else
     # Active -> mic-on icon (Usa a cor principal do wallpaper)
-    echo "<span foreground='$COLOR_MAIN'> |   </span>"
+    echo "<span> |  </span>"
 fi
 

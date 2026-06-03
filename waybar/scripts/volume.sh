@@ -17,17 +17,20 @@ sink=$(wpctl status | awk '/Sinks:/,/Sources:/' | grep '\*' | cut -d'.' -f2- | s
 
 # Icon logic
 if [ "$is_muted" = true ]; then
-  icon="   "
+  icon="   "
   vol_int=0
 elif [ "$vol_int" -lt 50 ]; then
-  icon="   "
+  icon="   "
 else
-  icon="   "
+  icon="   "
 fi
 
 # ASCII bar
 filled=$((vol_int / 10))
+[ $filled -gt 10 ] && filled=10
 empty=$((10 - filled))
+[ $empty -lt 0 ] && empty=0
+
 bar=""
 pad=""
 [ $filled -gt 0 ] && bar=$(printf '█%.0s' $(seq 1 $filled))
@@ -56,4 +59,3 @@ fi
 
 # Final JSON output
 echo "{\"text\":\"<span foreground='$fg'>$icon $ascii_bar $vol_int%</span>\",\"tooltip\":\"$tooltip\"}"
-
