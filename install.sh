@@ -41,7 +41,8 @@ yay -S --noconfirm \
     minecraft-launcher \
     prismlauncher \
     jetbrains-toolbox \
-    bluetui
+    bluetui \
+    nwg-look gnome-themes-extra
 
 # 4. Aplicar o tema de cores com o Pywal
 echo "🎨 Aplicando paleta de cores com o Pywal..."
