@@ -2,35 +2,35 @@
 @import url("file:///home/ninhux/.cache/wal/colors-waybar.css");
 
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "JetBrainsMono Nerd Font", "monospace";
-    font-size: 12px;
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font Propo", "monospace";
+  font-size: 14px;
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 0.90); 
-    color: @foreground;  
+  background-color: alpha(@background, 0.9);
+  color: @foreground;
 }
 
 /* Espaçamento e cor das tags/workspaces na esquerda */
 #workspaces button {
-    padding: 0 8px;
-    color: @color8; 
-    background-color: transparent;
+  padding: 0 8px;
+  color: @color8;
+  background-color: transparent;
 }
 
 #workspaces button.active {
-    color: @color4; 
+  color: @color4;
 }
 
 #workspaces button.urgent {
-    color: @color1;
+  color: @color1;
 }
 
 /* Nome da janela ativa na esquerda */
 #window {
-    color: @color6;
+  color: @color6;
 }
 
 /* Módulos da direita */
@@ -41,7 +41,35 @@ window#waybar {
 #custom-volume,
 #custom-power,
 #clock {
-    padding: 0;
-    color: @foreground; 
-    background-color: transparent;
+  padding: 0;
+  color: @foreground;
+  background-color: transparent;
+}
+
+#media {
+  color: #42ff9f;
+  margin: 4px 0px 4px 50px;
+}
+
+#custom-media-animation {
+  font-size: 7px;
+  margin-right: 5px;
+}
+
+#custom-media-now-playing {
+  margin-right: 7px;
+}
+
+#custom-media-time {
+  color: @foreground;
+  font-size: 10px;
+}
+
+tooltip {
+  background: black;
+  border-radius: 5px;
+}
+
+tooltip label {
+  color: @foreground;
 }

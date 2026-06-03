@@ -20,9 +20,9 @@ fi
 
 if pactl get-source-mute @DEFAULT_SOURCE@ | grep -q 'yes'; then
     # Muted -> mic-off icon (Usa a cor de mutado)
-    echo "<span foreground='$COLOR_MUTED'>    </span>"
+    echo "<span foreground='$COLOR_MUTED'> |   </span>"
 else
     # Active -> mic-on icon (Usa a cor principal do wallpaper)
-    echo "<span foreground='$COLOR_MAIN'>   </span>"
+    echo "<span foreground='$COLOR_MAIN'> |   </span>"
 fi
 

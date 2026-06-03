@@ -6,7 +6,8 @@
 # ───────────────────────────────────────────────────────────────────────────── 
 
 if rfkill list bluetooth | grep -q "Soft blocked: yes"; then
-    rfkill unblock bluetooth
+    rfkill unblock bluetooth 
+    ghostty --title=bluetui -e bluetui  
 else
     rfkill block bluetooth
 fi

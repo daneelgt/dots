@@ -1,23 +1,128 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 22, // Barra bem fina
+    "height": 27, // Altura compacta idêntica à dela
     "spacing": 0,
 
-    "modules-left": ["hyprland/window"], // Mostra o nome do programa aberto (ex: nvim)
-    "modules-right": ["custom/ram", "clock"],
+// ── Modules Layout ───────────────────────────────────────────────
+    "modules-left": [
+        "hyprland/workspaces", 
+        "hyprland/window"
+    ],
+    "modules-center": [],
+    "modules-right": [
+	    "group/media",
+	    "custom/volume", 
+	    "custom/microphone",
+      "bluetooth",
+      "temperature", 
+      "memory",
+	    "clock",
+      "custom/power"
+    ],
+
+// ── Workspaces ──────────────────────────────────
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}",
+        "persistent-workspaces": {
+            "*": [1, 2, 3] // Mantém os números fixos igual à imagem
+        }
+    },
 
     "hyprland/window": {
-        "format": " 1 | []= {} " // Imita o visual de tags e layout do DWM
+        "format": "  {title}"
     },
-    "custom/temp": { 
-        "exec": "sensors | grep 'Core 0' | awk '{print $3}'",
+
+// ── CPU (btop & htop) ──────────────────────────────────
+    "temperature": {
+        "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 26,
+        "format": "| {temperatureC}°C |",
         "interval": 10,
-        "format": " {} |" 
+        "max-length": 10,
+        "on-click": "exec ghostty --title=btop -e btop"
     },
-    "custom/ram": { "format": " 6.70g |" }, // Exemplo estático ou use módulo "memory"
-        
+
+    "memory": {
+     "interval": 30,
+        "format": "   {percentage}% |",
+        "tooltip-format": "{used:0.1f}G/{total:0.1f}G used",
+        "on-click": "exec ghostty --title=htop -e htop" 
+    },
+
+// ── Bluetooth ────────────────────────────────────────────────────
+"bluetooth": {
+    "format": "{icon}",
+    "format-icons": {
+      "enabled": "| 󰂯 ",
+      "disabled": "| 󰂲 "
+    },
+    "on-click": "~/.config/waybar/scripts/bluetooth-toggle.sh",
+    "tooltip-format": "Bluetooth is {status}",
+    "interval": 5
+  },
+
+// ── Clock ────────────────────────────────────────────────────────
     "clock": {
-        "format": "{:%A, %B %d - %I:%M %p}" // Formato exato de data/hora da imagem
+        "format": " {:%a, %d.%b %I:%M %p} ",
+        "tooltip-format": "{calendar}"
+    },
+
+ // ── Power ────────────────────────────────────────────────────────
+  "custom/power": {
+    "format": "| power  ",
+    "tooltip": true,
+    "tooltip-format": "Power Menu",
+    "on-click": "~/.config/waybar/scripts/powermenu.sh"
+  }, 
+
+// ── Microphone ───────────────────────────────────────────────────
+  "custom/microphone": {
+    "exec": "~/.config/waybar/scripts/mic.sh",
+    "interval": 1,
+    "tooltip": true,
+    "tooltip-format": "Mic Toggle",
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+  },
+
+// ── Volume ───────────────────────────────────────────────────────
+"custom/volume": {
+    "exec": "~/.config/waybar/scripts/volume.sh",
+    "return-type": "json",
+    "interval": 1,
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+    "on-click": "pavucontrol"
+  },
+
+// ── Media ───────────────────────────────────────────────────────
+"group/media": {
+      "orientation": "horizontal",
+      "modules": [
+        "custom/media-animation",
+        "custom/media-now-playing",
+        "custom/media-time"
+      ]
+    },
+  "custom/media-now-playing": {
+      "exec": "$HOME/.config/waybar/scripts/media-now-playing.sh",
+      "escape": true,
+      "tooltip": false,
+      "on-click": "playerctl play-pause",
+      "on-click-middle": "playerctl previous"
+    },
+    "custom/media-animation": {
+      "exec": "$HOME/.config/waybar/scripts/media-animation.sh",
+      "tooltip": false
+    },
+    "custom/media-time": {
+      "exec": "$HOME/.config/waybar/scripts/media-time.sh",
+      "escape": true,
+      "interval": 1,
+      "tooltip": false
     }
 }

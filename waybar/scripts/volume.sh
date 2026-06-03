@@ -17,12 +17,12 @@ sink=$(wpctl status | awk '/Sinks:/,/Sources:/' | grep '\*' | cut -d'.' -f2- | s
 
 # Icon logic
 if [ "$is_muted" = true ]; then
-  icon=""
+  icon="   "
   vol_int=0
 elif [ "$vol_int" -lt 50 ]; then
-  icon=""
+  icon="   "
 else
-  icon=""
+  icon="   "
 fi
 
 # ASCII bar
