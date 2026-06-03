@@ -32,7 +32,8 @@ sudo pacman -S --noconfirm \
     grim slurp wl-clipboard \
     cachyos-gaming-meta \
     ghostty \
-    inotify-tools
+    inotify-tools \
+    ttf-jetbrains-mono-nerd
 
 # 3. Instalar pacotes do AUR via Yay (VS Code, Launchers e Toolbox)
 echo "📦 Instalando pacotes do AUR via yay..."
