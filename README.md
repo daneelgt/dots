@@ -13,8 +13,9 @@
 | **Rofi (rofi-wayland)** | launcher (drun, run, window) |
 | **Kitty** | terminal emulator |
 | **Yazi** | file manager TUI com previews |
+| **Nautilus** | file manager |
 | **swww** | wallpaper engine animado |
-| **Fish** | shell |
+| **Zsh** | shell |
 
 ## instalação
 
@@ -33,6 +34,7 @@ chmod +x install.sh
 | `SUPER + Enter` | terminal (kitty) |
 | `SUPER + R` | launcher (rofi) |
 | `SUPER + E` | file manager (yazi) |
+| `SUPER + T` | file manager (nautilus) |
 | `SUPER + B` | browser (firefox) |
 | `SUPER + Q` | fechar janela |
 | `SUPER + V` | toggle floating |
@@ -64,6 +66,7 @@ chmod +x install.sh
 ├── fish/      → ~/.config/fish/
 ├── nvim/      → ~/.config/nvim/
 ├── ghostty/   → ~/.config/ghostty/
+├── nautilus/   → ~/.config/nautilus/
 └── install.sh
 ```
 
