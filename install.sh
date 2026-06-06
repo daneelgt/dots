@@ -72,11 +72,7 @@ yay -S --noconfirm \
 
 # 4. Aplicar o tema de cores com o Pywal
 echo "🎨 Aplicando paleta de cores com o Pywal..."
-if [ -f "/home/ninhux/Pictures/Wallpapers/a.png" ]; then
-  wal -i /home/ninhux/Pictures/Wallpapers/a.png
-else
-  echo "⚠️ Wallpaper 'a.png' não encontrado no caminho especificado. Pulando Pywal..."
-fi
+wal -i /home/ninhoo/Pictures/Wallpapers/
 
 # 5. Dar permissão de execução aos scripts do Waybar e Hyprland
 echo "🔧 Ajustando permissões dos scripts executáveis..."
