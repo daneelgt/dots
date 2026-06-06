@@ -30,7 +30,6 @@ sudo pacman -S --noconfirm \
     zip unzip curl \
     python-pywal \
     grim slurp wl-clipboard \
-    cachyos-gaming-meta \
     ghostty \
     inotify-tools \
     ttf-jetbrains-mono-nerd \
