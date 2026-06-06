@@ -8,49 +8,74 @@ echo "🚀 Iniciando a instalação dos pacotes e configurações..."
 echo "🔄 Atualizando repositórios..."
 sudo pacman -Sy
 
-
 # 1. Atualizar a base de dados dos repositórios
 echo "🔄 Atualizando repositórios..."
 sudo pacman -Sy
 
+sudo pacman -S --needed --noconfirm base-devel git
+
 # 2. Instalar pacotes principais via Pacman (Interface, Áudio, Ferramentas e Jogos)
 echo "📦 Instalando pacotes oficiais via pacman..."
 sudo pacman -S --noconfirm \
-    waybar \
-    amberol \
-    imv \
-    bc \
-    swww \
-    spotify-launcher \
-    steam \
-    solaar \
-    discord \
-    rnote \
-    btop \
-    zip unzip curl \
-    python-pywal \
-    grim slurp wl-clipboard \
-    ghostty \
-    inotify-tools \
-    ttf-jetbrains-mono-nerd \
-    nautilus
+  waybar \
+  pacman-contrib \
+  amberol \
+  imv \
+  bc \
+  jq \
+  nwg-look \
+  gnome-themes-extra \
+  pavucontrol \
+  wget \
+  curl \
+  nvidia-dkms \
+  nvidia-utils \
+  lib32-nvidia-utils \
+  nvidia-settings \
+  linux-headers \
+  linux-lts-headers \
+  pipewire \
+  pipewire-pulse \
+  pipewire-alsa \
+  wireplumber \
+  swww \
+  spotify-launcher \
+  steam \
+  solaar \
+  discord \
+  rnote \
+  btop \
+  zip unzip curl \
+  python-pywal \
+  grim slurp wl-clipboard \
+  ghostty \
+  inotify-tools \
+  ttf-jetbrains-mono-nerd \
+  nautilus
+
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
 
 # 3. Instalar pacotes do AUR via Yay (VS Code, Launchers e Toolbox)
 echo "📦 Instalando pacotes do AUR via yay..."
 yay -S --noconfirm \
-    visual-studio-code-bin \
-    minecraft-launcher \
-    prismlauncher \
-    jetbrains-toolbox \
-    bluetui \
-    nwg-look gnome-themes-extra
+  visual-studio-code-bin \
+  minecraft-launcher \
+  prismlauncher \
+  jetbrains-toolbox \
+  bluetui \
+  python-setuptools \
+  zscroll \
+  nwg-look \
+  gnome-themes-extra
 
 # 4. Aplicar o tema de cores com o Pywal
 echo "🎨 Aplicando paleta de cores com o Pywal..."
 if [ -f "/home/ninhux/Pictures/Wallpapers/a.png" ]; then
-    wal -i /home/ninhux/Pictures/Wallpapers/a.png
+  wal -i /home/ninhux/Pictures/Wallpapers/a.png
 else
-    echo "⚠️ Wallpaper 'a.png' não encontrado no caminho especificado. Pulando Pywal..."
+  echo "⚠️ Wallpaper 'a.png' não encontrado no caminho especificado. Pulando Pywal..."
 fi
 
 # 5. Dar permissão de execução aos scripts do Waybar e Hyprland
@@ -66,11 +91,11 @@ chmod +x ~/.config/hypr/scripts/* 2>/dev/null
 echo "🧹 Iniciando a faxina do sistema para liberar espaço..."
 
 # 4.1 Remover pacotes órfãos do Pacman
-if pacman -Qdt > /dev/null; then
-    echo "🗑️  Removendo pacotes órfãos do Pacman..."
-    sudo pacman -Rns $(pacman -Qdtq) --noconfirm
+if pacman -Qdt >/dev/null; then
+  echo "🗑️  Removendo pacotes órfãos do Pacman..."
+  sudo pacman -Rns $(pacman -Qdtq) --noconfirm
 else
-    echo "✅ Nenhum pacote órfão encontrado no Pacman."
+  echo "✅ Nenhum pacote órfão encontrado no Pacman."
 fi
 
 # 4.2 Remover pacotes órfãos do AUR
