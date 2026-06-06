@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 27, // Altura compacta idêntica à dela
+    "height": 33,
     "spacing": 0,
 
 // ── Modules Layout ───────────────────────────────────────────────
@@ -27,7 +27,7 @@
         "all-outputs": true,
         "format": "{name}",
         "persistent-workspaces": {
-            "*": [1, 2, 3] // Mantém os números fixos igual à imagem
+            "*": [1, 2] // Mantém os números fixos igual à imagem
         }
     },
 
