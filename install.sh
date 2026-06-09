@@ -57,6 +57,10 @@ sudo pacman -S --needed --noconfirm \
   nautilus \
   yazi \
   zsh \
+  zsh-autosuggestions \
+  zsh-syntax-highlighting \
+  zoxide \
+  thefuck \
   rofi \
   linux-headers
 
@@ -119,6 +123,27 @@ echo "🔧 Ajustando permissões dos scripts executáveis..."
 chmod +x ~/.config/hypr/scripts/wallpaper.sh 2>/dev/null
 find ~/.config/hypr/scripts -type f -exec chmod +x {} \; 2>/dev/null || true
 find ~/.config/waybar/scripts -type f -exec chmod +x {} \; 2>/dev/null || true
+
+# ===============================
+# Powerlevel10k
+# ===============================
+
+if [ ! -d "$HOME/powerlevel10k" ]; then
+    echo "📦 Instalando Powerlevel10k..."
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/powerlevel10k"
+fi
+
+[[ -f ~/powerlevel10k/powerlevel10k.zsh-theme ]] && \
+    source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+[[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
+    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+[[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+command -v thefuck >/dev/null && eval "$(thefuck --alias)"
+command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
 
 # ==========================================
 # 4. Limpeza Geral de Sujeira do Sistema
