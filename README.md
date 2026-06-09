@@ -20,9 +20,12 @@
 ## instalação
 
 ```sh
-git clone https://github.com/daneelgt/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-chmod +x install.sh
+git clone https://github.com/daneelgt/dots.git
+cd dots
+
+chmod +x deploy.sh install.sh
+
+./deploy.sh
 ./install.sh
 ```
 
