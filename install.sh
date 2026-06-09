@@ -28,10 +28,6 @@ sudo pacman -S --noconfirm \
   pavucontrol \
   wget \
   curl \
-  nvidia-dkms \
-  nvidia-utils \
-  lib32-nvidia-utils \
-  nvidia-settings \
   linux-headers \
   linux-lts-headers \
   pipewire \
@@ -51,7 +47,10 @@ sudo pacman -S --noconfirm \
   ghostty \
   inotify-tools \
   ttf-jetbrains-mono-nerd \
-  nautilus
+  nautilus \
+  yazi \
+  zsh \
+  rofi 
 
 git clone https://aur.archlinux.org/yay.git
 cd yay
@@ -68,6 +67,10 @@ yay -S --noconfirm \
   python-setuptools \
   zscroll \
   nwg-look \
+  nvidia-dkms \
+  nvidia-utils \
+  lib32-nvidia-utils \
+  nvidia-settings \
   gnome-themes-extra
 
 # 4. Aplicar o tema de cores com o Pywal
