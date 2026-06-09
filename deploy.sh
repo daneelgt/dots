@@ -2,12 +2,7 @@
 
 set -euo pipefail
 
-echo "📂 Instalando dotfiles...
-      |\      _,,,---,,_
-ZZZzz /,`.-'`'    -.  ;-;;,_
-     |,4-  ) )-,_. ,\ (  `'-'
-    '---''(_/--'  `-'\_) 
-"
+echo "📂 Instalando dotfiles..."
 
 mkdir -p "$HOME/.config"
 mkdir -p "$HOME/Pictures"
