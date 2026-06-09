@@ -63,7 +63,6 @@ chmod +x install.sh
 ├── yazi/      → ~/.config/yazi/
 ├── fastfetch/ → ~/.config/fastfetch/
 ├── zsh/       → ~/.config/zsh/
-├── fish/      → ~/.config/fish/
 ├── nvim/      → ~/.config/nvim/
 ├── ghostty/   → ~/.config/ghostty/
 ├── nautilus/   → ~/.config/nautilus/
