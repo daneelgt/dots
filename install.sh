@@ -19,6 +19,18 @@ sudo pacman -S --needed --noconfirm \
     git
 
 
+echo "🎮 Verificando drivers NVIDIA..."
+
+if pacman -Q nvidia-utils &>/dev/null; then
+    echo "⚠️ Removendo drivers NVIDIA padrão..."
+
+    sudo pacman -Rns --noconfirm \
+        nvidia-utils \
+        lib32-nvidia-utils \
+        nvidia-settings || true
+fi
+
+
 # 2. Instalar pacotes principais via Pacman (Interface, Áudio, Ferramentas e Jogos)
 echo "📦 Instalando pacotes oficiais via pacman..."
 
@@ -40,7 +52,6 @@ sudo pacman -S --needed --noconfirm \
   wireplumber \
   swww \
   spotify-launcher \
-  steam \
   solaar \
   discord \
   rnote \
