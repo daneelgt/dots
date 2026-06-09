@@ -1,5 +1,5 @@
 #!/bin/bash
-
+START_TIME=$(date +%s)
 set -euo pipefail
 
 echo "🚀 Iniciando a instalação dos pacotes e configurações..."
@@ -118,7 +118,9 @@ fi
 
 # 5. Dar permissão de execução aos scripts do Waybar e Hyprland
 echo "🔧 Ajustando permissões dos scripts executáveis..."
-chmod +x ~/.config/hypr/scripts/wallpaper.sh 2>/dev/null
+[ -f ~/.config/hypr/scripts/wallpaper.sh ] && \
+chmod +x ~/.config/hypr/scripts/wallpaper.sh
+
 [ -d ~/.config/hypr/scripts ] && \
 find ~/.config/hypr/scripts -type f -exec chmod +x {} \;
 
@@ -158,7 +160,8 @@ yay -Scc --noconfirm || true
 rm -rf ~/.local/share/Trash/* 2>/dev/null || true
 
 if [ "$SHELL" != "/usr/bin/zsh" ]; then
-    chsh -s /usr/bin/zsh
+    echo "🐚 Definindo ZSH como shell padrão..."
+    chsh -s "$(which zsh)" || true
 fi
 
 # ===============================
@@ -170,7 +173,11 @@ if command -v nvidia-smi >/dev/null; then
     nvidia-smi
 fi
 
+END_TIME=$(date +%s)
+ELAPSED=$((END_TIME - START_TIME))
+
 echo "⚠️ Recomenda-se reiniciar o computador."
 
 echo ""
+echo "⏱️ Tempo total: ${ELAPSED}s"
 echo "✅ Tudo pronto! Sistema configurado com sucesso."
