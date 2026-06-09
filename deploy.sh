@@ -4,6 +4,15 @@ set -euo pipefail
 
 echo "📂 Instalando dotfiles..."
 
+cat <<'EOF'
+      |\      _,,,---,,_
+ZZZzz /,`.-'`'    -.  ;-;;,_
+     |,4-  ) )-,_. ,\ (  `'-'
+    '---''(_/--'  `-'\_)  ninhoo-installer · arch
+EOF
+
+echo ""
+
 mkdir -p "$HOME/.config"
 mkdir -p "$HOME/Pictures"
 
