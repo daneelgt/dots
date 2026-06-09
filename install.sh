@@ -49,9 +49,13 @@ sudo pacman -S --noconfirm \
   zsh \
   rofi 
 
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
+if ! command -v yay &>/dev/null; then
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si --noconfirm
+    cd ..
+    rm -rf yay
+fi
 
 # 3. Instalar pacotes do AUR via Yay (VS Code, Launchers e Toolbox)
 echo "📦 Instalando pacotes do AUR via yay..."
