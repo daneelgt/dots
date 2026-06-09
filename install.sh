@@ -94,12 +94,10 @@ yay -S --needed --noconfirm \
   bluetui \
   python-setuptools \
   zscroll \
-  nwg-look \
   nvidia-580xx-dkms \
   nvidia-580xx-utils \
   lib32-nvidia-580xx-utils \
-  nvidia-580xx-settings \
-  gnome-themes-extra
+  nvidia-580xx-settings 
 
 # ===============================
 # Atualizar initramfs
@@ -130,20 +128,11 @@ find ~/.config/waybar/scripts -type f -exec chmod +x {} \; 2>/dev/null || true
 
 if [ ! -d "$HOME/powerlevel10k" ]; then
     echo "📦 Instalando Powerlevel10k..."
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/powerlevel10k"
+    git clone --depth=1 \
+        https://github.com/romkatv/powerlevel10k.git \
+        "$HOME/powerlevel10k"
 fi
 
-[[ -f ~/powerlevel10k/powerlevel10k.zsh-theme ]] && \
-    source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-[[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
-    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-[[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
-    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-command -v thefuck >/dev/null && eval "$(thefuck --alias)"
-command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
 
 # ==========================================
 # 4. Limpeza Geral de Sujeira do Sistema
@@ -153,7 +142,7 @@ echo "🧹 Iniciando a faxina do sistema para liberar espaço..."
 ORPHANS=$(pacman -Qdtq 2>/dev/null || true)
 
 if [ -n "$ORPHANS" ]; then
-    sudo pacman -Rns $ORPHANS --noconfirm
+    pacman -Qdtq | sudo pacman -Rns - --noconfirm
 fi
 
 sudo paccache -r
