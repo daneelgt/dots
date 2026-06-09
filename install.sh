@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 echo "🚀 Iniciando a instalação dos pacotes e configurações..."
 
 # ==========================================
@@ -8,12 +10,19 @@ echo "🚀 Iniciando a instalação dos pacotes e configurações..."
 echo "🔄 Atualizando repositórios..."
 sudo pacman -Syu --noconfirm
 
+# ===============================
+# Dependências básicas
+# ===============================
+echo "📦 Instalando dependências básicas..."
+sudo pacman -S --needed --noconfirm \
+    base-devel \
+    git
 
-sudo pacman -S --needed --noconfirm base-devel git
 
 # 2. Instalar pacotes principais via Pacman (Interface, Áudio, Ferramentas e Jogos)
 echo "📦 Instalando pacotes oficiais via pacman..."
-sudo pacman -S --noconfirm \
+
+sudo pacman -S --needed --noconfirm \
   waybar \
   pacman-contrib \
   amberol \
@@ -25,8 +34,6 @@ sudo pacman -S --noconfirm \
   pavucontrol \
   wget \
   curl \
-  linux-headers \
-  linux-lts-headers \
   pipewire \
   pipewire-pulse \
   pipewire-alsa \
@@ -38,28 +45,44 @@ sudo pacman -S --noconfirm \
   discord \
   rnote \
   btop \
-  zip unzip curl \
+  zip \
+  unzip \
   python-pywal \
-  grim slurp wl-clipboard \
+  grim \
+  slurp \
+  wl-clipboard \
   ghostty \
   inotify-tools \
   ttf-jetbrains-mono-nerd \
   nautilus \
   yazi \
   zsh \
-  rofi 
+  rofi \
+  linux-headers
 
-if ! command -v yay &>/dev/null; then
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
+# ===============================
+# Instalar yay
+# ===============================
+
+if ! command -v yay >/dev/null 2>&1; then
+    echo "📦 Instalando yay..."
+
+    TMPDIR=$(mktemp -d)
+
+    git clone https://aur.archlinux.org/yay.git "$TMPDIR/yay"
+
+    cd "$TMPDIR/yay"
     makepkg -si --noconfirm
-    cd ..
-    rm -rf yay
+
+    cd ~
+    rm -rf "$TMPDIR"
 fi
+
 
 # 3. Instalar pacotes do AUR via Yay (VS Code, Launchers e Toolbox)
 echo "📦 Instalando pacotes do AUR via yay..."
-yay -S --noconfirm \
+
+yay -S --needed --noconfirm \
   visual-studio-code-bin \
   minecraft-launcher \
   prismlauncher \
@@ -74,44 +97,55 @@ yay -S --noconfirm \
   nvidia-580xx-settings \
   gnome-themes-extra
 
+# ===============================
+# Atualizar initramfs
+# ===============================
+echo "🔧 Atualizando initramfs..."
+sudo mkinitcpio -P
+
 # 4. Aplicar o tema de cores com o Pywal
 echo "🎨 Aplicando paleta de cores com o Pywal..."
-wal -i "$(find ~/Pictures/Wallpapers -type f | shuf -n1)"
+if [ -d "$HOME/Pictures/Wallpapers" ]; then
+    WALL=$(find "$HOME/Pictures/Wallpapers" -type f | shuf -n 1)
+
+    if [ -n "$WALL" ]; then
+        echo "🎨 Aplicando Pywal..."
+        wal -i "$WALL"
+    fi
+fi
 
 # 5. Dar permissão de execução aos scripts do Waybar e Hyprland
 echo "🔧 Ajustando permissões dos scripts executáveis..."
 chmod +x ~/.config/hypr/scripts/wallpaper.sh 2>/dev/null
-chmod +x ~/.config/hypr/scripts/wallpaper-auto.sh 2>/dev/null
-chmod +x ~/.config/waybar/scripts/* 2>/dev/null
-chmod +x ~/.config/hypr/scripts/* 2>/dev/null
+find ~/.config/hypr/scripts -type f -exec chmod +x {} \; 2>/dev/null || true
+find ~/.config/waybar/scripts -type f -exec chmod +x {} \; 2>/dev/null || true
 
 # ==========================================
 # 4. Limpeza Geral de Sujeira do Sistema
 # ==========================================
 echo "🧹 Iniciando a faxina do sistema para liberar espaço..."
 
-# 4.1 Remover pacotes órfãos do Pacman
-if pacman -Qdt >/dev/null; then
-  echo "🗑️  Removendo pacotes órfãos do Pacman..."
-  sudo pacman -Rns $(pacman -Qdtq) --noconfirm
-else
-  echo "✅ Nenhum pacote órfão encontrado no Pacman."
+ORPHANS=$(pacman -Qdtq 2>/dev/null || true)
+
+if [ -n "$ORPHANS" ]; then
+    sudo pacman -Rns $ORPHANS --noconfirm
 fi
 
-# 4.2 Remover pacotes órfãos do AUR
-echo "🗑️  Limpando dependências desnecessárias do AUR..."
-yay -Yc --noconfirm 2>/dev/null
-
-# 4.3 Limpar cache de pacotes (Corrigido: sem o --noconfirm)
-echo "📦 Limpando cache antigo de pacotes do Pacman..."
 sudo paccache -r
 
-# 4.4 Limpar cache do Yay/AUR
-echo "📦 Limpando arquivos temporários de compilação do Yay..."
-yay -Scc --noconfirm
+yay -Yc --noconfirm || true
+yay -Scc --noconfirm || true
 
-# 4.5 Esvaziar a Lixeira
-echo "🗑️  Esvaziando a lixeira (~/.local/share/Trash)..."
-rm -rf ~/.local/share/Trash/* 2>/dev/null
+rm -rf ~/.local/share/Trash/* 2>/dev/null || true
 
+# ===============================
+# Verificação NVIDIA
+# ===============================
+echo "🎮 Verificando driver NVIDIA..."
+
+if command -v nvidia-smi >/dev/null; then
+    nvidia-smi
+fi
+
+echo ""
 echo "✅ Tudo pronto! Sistema configurado com sucesso."
