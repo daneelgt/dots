@@ -119,8 +119,13 @@ fi
 # 5. Dar permissão de execução aos scripts do Waybar e Hyprland
 echo "🔧 Ajustando permissões dos scripts executáveis..."
 chmod +x ~/.config/hypr/scripts/wallpaper.sh 2>/dev/null
-find ~/.config/hypr/scripts -type f -exec chmod +x {} \; 2>/dev/null || true
-find ~/.config/waybar/scripts -type f -exec chmod +x {} \; 2>/dev/null || true
+[ -d ~/.config/hypr/scripts ] && \
+find ~/.config/hypr/scripts -type f -exec chmod +x {} \;
+
+[ -d ~/.config/waybar/scripts ] && \
+find ~/.config/waybar/scripts -type f -exec chmod +x {} \;
+
+
 
 # ===============================
 # Powerlevel10k
@@ -142,7 +147,7 @@ echo "🧹 Iniciando a faxina do sistema para liberar espaço..."
 ORPHANS=$(pacman -Qdtq 2>/dev/null || true)
 
 if [ -n "$ORPHANS" ]; then
-    pacman -Qdtq | sudo pacman -Rns - --noconfirm
+    sudo pacman -Rns --noconfirm $ORPHANS
 fi
 
 sudo paccache -r
@@ -152,6 +157,10 @@ yay -Scc --noconfirm || true
 
 rm -rf ~/.local/share/Trash/* 2>/dev/null || true
 
+if [ "$SHELL" != "/usr/bin/zsh" ]; then
+    chsh -s /usr/bin/zsh
+fi
+
 # ===============================
 # Verificação NVIDIA
 # ===============================
@@ -160,6 +169,8 @@ echo "🎮 Verificando driver NVIDIA..."
 if command -v nvidia-smi >/dev/null; then
     nvidia-smi
 fi
+
+echo "⚠️ Recomenda-se reiniciar o computador."
 
 echo ""
 echo "✅ Tudo pronto! Sistema configurado com sucesso."

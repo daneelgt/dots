@@ -1,0 +1,14 @@
+# ZSH
+.zcompdump*
+.zsh_history
+
+# Git status cache (powerlevel10k)
+.git/.gitstatus.*
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
