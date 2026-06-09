@@ -2,12 +2,14 @@
 START_TIME=$(date +%s)
 set -euo pipefail
 
-echo "🚀 Iniciando a instalação dos pacotes e configurações...
+echo "🚀 Iniciando a instalação dos pacotes e configurações..."
+
+cat <<'EOF'
       |\      _,,,---,,_
 ZZZzz /,`.-'`'    -.  ;-;;,_
      |,4-  ) )-,_. ,\ (  `'-'
-    '---''(_/--'  `-'\_)  ninhoo-installer · hyprland - arch
-"
+    '---''(_/--'  `-'\_)  ninhoo-installer · arch
+EOF
 
 # ==========================================
 # 1. Atualizar e Instalar Pacotes
@@ -195,11 +197,12 @@ ELAPSED=$((END_TIME - START_TIME))
 
 echo "⚠️ Recomenda-se reiniciar o computador."
 
-echo "
+cat <<'EOF'
       |\      _,,,---,,_
 ZZZzz /,`.-'`'    -.  ;-;;,_
      |,4-  ) )-,_. ,\ (  `'-'
-    '---''(_/--'  `-'\_)  
-"
+    '---''(_/--'  `-'\_)  ninhoo-installer · arch
+EOF
+echo ""
 echo "⏱️ Tempo total: ${ELAPSED}s"
 echo "✅ Tudo pronto! Sistema configurado com sucesso."
