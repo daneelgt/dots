@@ -8,7 +8,7 @@ cat <<'EOF'
       |\      _,,,---,,_
 ZZZzz /,`.-'`'    -.  ;-;;,_
      |,4-  ) )-,_. ,\ (  `'-'
-    '---''(_/--'  `-'\_)  ninhoo-installer · arch
+    '---''(_/--'  `-'\_)  ninhoo-deploy · arch
 EOF
 
 echo ""
