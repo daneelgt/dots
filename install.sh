@@ -38,6 +38,7 @@ sudo pacman -S --needed --noconfirm \
   waybar \
   pacman-contrib \
   amberol \
+  eza \
   imv \
   bc \
   jq \
