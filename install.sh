@@ -6,11 +6,8 @@ echo "🚀 Iniciando a instalação dos pacotes e configurações..."
 # 1. Atualizar e Instalar Pacotes
 # ==========================================
 echo "🔄 Atualizando repositórios..."
-sudo pacman -Sy
+sudo pacman -Syu --noconfirm
 
-# 1. Atualizar a base de dados dos repositórios
-echo "🔄 Atualizando repositórios..."
-sudo pacman -Sy
 
 sudo pacman -S --needed --noconfirm base-devel git
 
@@ -67,10 +64,10 @@ yay -S --noconfirm \
   python-setuptools \
   zscroll \
   nwg-look \
-  nvidia-dkms \
-  nvidia-utils \
-  lib32-nvidia-utils \
-  nvidia-settings \
+  nvidia-580xx-dkms \
+  nvidia-580xx-utils \
+  lib32-nvidia-580xx-utils \
+  nvidia-580xx-settings \
   gnome-themes-extra
 
 # 4. Aplicar o tema de cores com o Pywal
