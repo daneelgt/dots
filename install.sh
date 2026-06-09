@@ -76,7 +76,7 @@ yay -S --noconfirm \
 
 # 4. Aplicar o tema de cores com o Pywal
 echo "🎨 Aplicando paleta de cores com o Pywal..."
-wal -i /home/ninhoo/Pictures/Wallpapers/
+wal -i "$(find ~/Pictures/Wallpapers -type f | shuf -n1)"
 
 # 5. Dar permissão de execução aos scripts do Waybar e Hyprland
 echo "🔧 Ajustando permissões dos scripts executáveis..."
