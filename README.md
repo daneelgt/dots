@@ -11,7 +11,7 @@
 | **Hyprland** | window manager (Wayland, NVIDIA) |
 | **Waybar** | status bar floating no topo |
 | **Rofi (rofi-wayland)** | launcher (drun, run, window) |
-| **Kitty** | terminal emulator |
+| **Ghostty** | terminal emulator |
 | **Yazi** | file manager TUI com previews |
 | **Nautilus** | file manager |
 | **swww** | wallpaper engine animado |
