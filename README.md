@@ -34,7 +34,7 @@ chmod +x deploy.sh install.sh
 
 | atalho | ação |
 |---|---|
-| `SUPER + Enter` | terminal (kitty) |
+| `SUPER + Enter` | terminal (ghostty) |
 | `SUPER + R` | launcher (rofi) |
 | `SUPER + E` | file manager (yazi) |
 | `SUPER + T` | file manager (nautilus) |
