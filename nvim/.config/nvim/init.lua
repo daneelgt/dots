@@ -1,3 +1,2 @@
-require("josean.core")
-require("josean.lazy")
-require("josean.lsp")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
